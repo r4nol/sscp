@@ -12,6 +12,8 @@ LABEL org.opencontainers.image.title="Secure Supply Chain MVP" \
     org.opencontainers.image.vendor="RASP Cyber Academy" \
     org.opencontainers.image.source="https://github.com/r4nol/secure-supply-chain"
 
+RUN apk update && apk upgrade --no-cache && rm -rf /var/cache/apk/*
+
 COPY --from=builder /build/html /usr/share/nginx/html
 
 RUN printf 'server {\n\
